@@ -6,13 +6,18 @@
 </script>
 
 <style>
-	div {
+	fieldset {
 			border-style: solid;
 			width: 30%;
 	}
+	fieldset legend {
+      font-size: larger;
+      font-weight: bold;
+	}
 </style>
 
-<div>
+<fieldset>
+	<legend>Accounts</legend>
 	<ul>
 		{#each accounts as account}
 		   <li>
@@ -20,4 +25,4 @@
 		   </li>
 		{/each}
 	</ul>
-</div>
+</fieldset>
