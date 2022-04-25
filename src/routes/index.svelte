@@ -1,12 +1,10 @@
 <script>
 	import Accounts from '$lib/Accounts.svelte';
 	import CarbonCredits from '$lib/CarbonCreditsList.svelte';
-	import CreateCarbonCredit from '$lib/CreateCarbonCredit.svelte';
 
 	// These fields get read automatically from a GET request to the ./routes/index.js 'endpoint'
 	export let carbon_credits;
 	export let accounts;
-	export let sources;
 </script>
 
 <style>
@@ -18,4 +16,4 @@
 <div class='spacer' />
 <CarbonCredits carbon_credits='{carbon_credits}'/>
 <div class='spacer' />
-<CreateCarbonCredit accounts='{accounts}' sources='{sources}'/>
+<a sveltekit:prefetch href="/new" >Create Credit</a>
