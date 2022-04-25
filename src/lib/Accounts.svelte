@@ -1,7 +1,6 @@
 <script>
 
-	let accounts = [{name: "Alice", session_id: "123"},
-									{name: "Bob", session_id: "456"}];
+	export let accounts;
 
 </script>
 

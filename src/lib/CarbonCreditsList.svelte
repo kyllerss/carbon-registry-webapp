@@ -1,7 +1,6 @@
 <script>
 
-	let carbon_credits = [{source: "GoldStandard", serial_number: "123-abc", owner: "Alice"},
-		{source: "Verra", serial_number: "456-def", owner: "Bob"}];
+	export let carbon_credits;
 
 </script>
 
