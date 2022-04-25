@@ -17,3 +17,18 @@ export async function get() {
 		}
 	};
 }
+
+/** @type {import('./').RequestHandler} */
+export async function post({request}) {
+
+	const data = await request.formData();
+	//console.log(data.serial_number);
+	console.table([...data.entries()]);
+	// const {source, serial_number, account} = Object.fromEntries(data);
+	// console.log(source);
+	// console.log(serial_number);
+	// console.log(account);
+
+	return {status: 200,
+				  body: {}};
+}

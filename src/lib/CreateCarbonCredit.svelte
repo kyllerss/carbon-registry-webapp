@@ -35,7 +35,7 @@
 
 <fieldset>
 	<legend>Create Carbon Credit</legend>
-	<form>
+	<form method='post'>
 		<div>
 			<label for='account'>Account:</label>
 			<select id='account' name='account'>
