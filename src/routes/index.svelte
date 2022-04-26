@@ -1,27 +1,20 @@
 <script>
-	import Accounts from '$lib/Accounts.svelte';
-	import CarbonCredits from '$lib/CarbonCreditsList.svelte';
+	import { onMount } from 'svelte';
+	import { carbon_credit_store } from '$lib/stores/carbon_credits_store.js';
+	import Accounts from '$lib/components/Accounts.svelte';
+	import CarbonCredits from '$lib/components/CarbonCreditsList.svelte';
 
 	// These fields get read automatically from a GET request to the ./routes/index.js 'endpoint'
 	export let carbon_credits;
 	export let accounts;
 
-	// TODO Move to separate file
-	import { ApiPromise, WsProvider } from '@polkadot/api';
+	// gets called once components have been rendered
+	onMount(async () => {
+		carbon_credit_store.subscribe((cc) => {
+			console.log("Current carbon credits: ${cc}");
+		});
+	});
 
-	async function main () {
-		const wsProvider = new WsProvider('ws://127.0.0.1:9944');
-		ApiPromise
-			.create({ provider: wsProvider })//.isReady
-			.then((api) =>
-				console.log(api.genesisHash.toHex())
-			);
-
-		// const api = await ApiPromise.create({ provider: wsProvider });
-		// console.log(api.genesisHash.toHex());
-	}
-
-	main().catch(console.error); // .finally(() => process.exit())
 </script>
 
 <style>
