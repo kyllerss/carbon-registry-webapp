@@ -5,6 +5,23 @@
 	// These fields get read automatically from a GET request to the ./routes/index.js 'endpoint'
 	export let carbon_credits;
 	export let accounts;
+
+	// TODO Move to separate file
+	import { ApiPromise, WsProvider } from '@polkadot/api';
+
+	async function main () {
+		const wsProvider = new WsProvider('ws://127.0.0.1:9944');
+		ApiPromise
+			.create({ provider: wsProvider })//.isReady
+			.then((api) =>
+				console.log(api.genesisHash.toHex())
+			);
+
+		// const api = await ApiPromise.create({ provider: wsProvider });
+		// console.log(api.genesisHash.toHex());
+	}
+
+	main().catch(console.error); // .finally(() => process.exit())
 </script>
 
 <style>
