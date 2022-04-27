@@ -39,6 +39,7 @@
     fieldset {
         border-style: solid;
         width: 50%;
+				margin-bottom:40px;
     }
     fieldset legend {
         font-size: larger;
@@ -54,7 +55,7 @@
 			<label for='account'>Account:</label>
 			<select id='account' name='account'>
 				{#each accounts as account}
-					<option value='{account.session_id}'>{account.name}</option>
+					<option value='{account.uri}'>{account.name}</option>
 				{/each}
 			</select>
 		</div>
@@ -78,3 +79,5 @@
 		</div>
 	</form>
 </fieldset>
+
+<a href="/" >Back Home</a>

@@ -6,22 +6,48 @@
 
 <style>
     fieldset {
-        border-style: solid;
-        width: 50%;
+        border-style: hidden;
     }
+
     fieldset legend {
         font-size: larger;
         font-weight: bold;
     }
+
+    table {
+        border-collapse: collapse;
+    }
+    th,
+    td {
+        border: 1px solid #cecfd5;
+        padding: 10px 15px;
+				text-align:left;
+    }
+		.message {font-style: italic;}
 </style>
 
 <fieldset>
 	<legend>Carbon Credits</legend>
-	<ul>
-		{#each carbon_credits as carbon_credit}
-			<li>
-				{carbon_credit.source} (serial: {carbon_credit.serial_number}) - {carbon_credit.owner}
-			</li>
-		{/each}
-	</ul>
+	{#if carbon_credits.length == 0}
+		<span class='message'>No carbon credits</span>
+	{:else}
+		<table>
+			<thead>
+				<th>Source</th>
+				<th>Serial #</th>
+				<th>Owner Address</th>
+				<th>Retired</th>
+			</thead>
+			<tbody>
+				{#each carbon_credits as carbon_credit}
+					<tr>
+						<td>{carbon_credit.source}</td>
+						<td>{carbon_credit.serialNumber}</td>
+						<td>{carbon_credit.owner}</td>
+						<td>{carbon_credit.retired}</td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	{/if}
 </fieldset>
