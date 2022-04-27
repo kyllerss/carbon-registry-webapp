@@ -20,6 +20,14 @@ export async function fetch_carbon_credits() {
 	//return carbon_credits;
 }
 
+export async function subscribe_carbon_credits(callback) {
+	const unsub = await API.query.substrateCarbon.countForCredits(async (count) => {
+		let all_credits = await fetch_carbon_credits();
+		callback(all_credits);
+	});
+	return unsub;
+}
+
 export async function fetch_sources() {
 	console.log('call to fetch_sources...');
 	const sources = [{id: "GoldStandard", name:"GoldStandard"},
