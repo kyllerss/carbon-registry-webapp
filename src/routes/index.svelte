@@ -3,7 +3,9 @@
 	import { carbon_credit_store } from '$lib/stores/carbon_credits_store.js';
 	import Accounts from '$lib/components/Accounts.svelte';
 	import CarbonCredits from '$lib/components/CarbonCreditsList.svelte';
-	import { subscribe_carbon_credits } from '$lib/utils/blockchain.js'; // TODO REMOVE
+	import { subscribe_carbon_credits, fetch_accounts } from '$lib/utils/blockchain.js'; // TODO REMOVE
+	import { createTestKeyring } from "@polkadot/keyring/testing";
+
 
 	// These fields get read automatically from a GET request to the ./routes/index.js 'endpoint'
 	export let carbon_credits;
@@ -15,6 +17,14 @@
 			unsubscribe = await subscribe_carbon_credits((credits) => {
 				carbon_credits = credits;
 			});
+
+			debugger;
+			let accs = await fetch_accounts();
+			console.table(accs);
+
+			let testKeyring = createTestKeyring();
+			console.log(testKeyring);
+
 	});
 
 	onDestroy(async () => {

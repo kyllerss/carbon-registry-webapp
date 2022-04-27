@@ -1,5 +1,6 @@
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { Keyring } from '@polkadot/api';
+import { createTestKeyring } from "@polkadot/keyring/testing";
 
 export const API = await ApiPromise.create({ provider: new WsProvider('ws://127.0.0.1:9944') });
 
@@ -7,6 +8,13 @@ export async function fetch_accounts() {
 	console.log('call to fetch_accounts...');
 	const accounts = [{name: "Alice", uri: "//Alice", address: "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"},
 										{name: "Bob", uri: "//Bob", address: "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"}];
+
+	// let entries = await API.query.system.account.entries();
+	// let all_accounts = entries.map(([key, option] ) => option.toHuman());
+
+	// let testKeyring = createTestKeyring();
+	// console.log(testKeyring);
+
 	return accounts;
 }
 
