@@ -1,9 +1,12 @@
 import { ApiPromise, WsProvider } from '@polkadot/api';
+import { Keyring } from '@polkadot/api';
+
+export const API = await ApiPromise.create({ provider: new WsProvider('ws://127.0.0.1:9944') });
 
 export async function fetch_accounts() {
 	console.log('call to fetch_accounts...');
-	const accounts = [{name: "Alice", session_id: "123000"},
-		{name: "Bob", session_id: "456000"}];
+	const accounts = [{name: "Alice", session_id: "//Alice"},
+		{name: "Bob", session_id: "//Bob"}];
 	return accounts;
 }
 
@@ -16,29 +19,16 @@ export async function fetch_carbon_credits() {
 
 export async function fetch_sources() {
 	console.log('call to fetch_sources...');
-	const sources = [{id: "1", name:"GoldStandard"},
-		{id: "2", name:"Verra"},
-		{id: "3", name:"Verified Carbon Registry"}];
+	const sources = [{id: "GoldStandard", name:"GoldStandard"},
+		{id: "AmericanCarbonRegistry", name:"American Carbon Registry"},
+		{id: "VCS", name:"Verified Carbon Registry"}];
 	return sources;
 }
 
-export async function submit_carbon_credits_to_blockchain(source, serial_number, account) {
+export async function submit_carbon_credits_to_blockchain(source, serial_number, account_address) {
 
-	const wsProvider = new WsProvider('ws://127.0.0.1:9944');
-	// ApiPromise
-	// 	.create({ provider: wsProvider })//.isReady
-	// 	.then((api) =>
-	// 		console.log()
-	// 	);
-
-	// Retrieve the chain & node information via rpc calls
-	const api = await ApiPromise.create({ provider: wsProvider });
-	const [chain, nodeName, nodeVersion, genesisHash] = await Promise.all([
-		api.rpc.system.chain(),
-		api.rpc.system.name(),
-		api.rpc.system.version(),
-		api.genesisHash.toHex()
-	]);
-
-	console.log(`SERVER: You are connected to chain ${chain} using ${nodeName} v${nodeVersion} - ${genesisHash}`);
+	const keyring = new Keyring({ type: 'sr25519' });
+	const account_pair = keyring.addFromUri(account_address);
+	let result = await API.tx.substrateCarbon.createCredit(source, serial_number).signAndSend(account_pair);
+	// console.log(result);
 }

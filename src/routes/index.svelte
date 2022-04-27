@@ -18,7 +18,7 @@
 </script>
 
 <style>
-	div.spacer {margin-top: 20px;}
+	.spacer {margin-top: 20px;}
 </style>
 
 <h1>Carbon Credits Registry</h1>

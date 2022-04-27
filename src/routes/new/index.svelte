@@ -1,4 +1,18 @@
 <script>
+
+	// import { submit_carbon_credits_to_blockchain } from '$lib/utils/blockchain.js';
+	// import { onMount } from 'svelte';
+	//
+	// onMount(async () => {
+	//
+	// 	let source = "GoldStandard";
+	// 	let serial_number = "2345";
+	// 	let account = "//Alice";
+	// 	debugger;
+	// 	await submit_carbon_credits_to_blockchain(source, serial_number, account);
+	// });
+
+
 	export let accounts;
 	export let sources;
 </script>
