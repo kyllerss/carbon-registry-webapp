@@ -8,9 +8,9 @@ export async function fetch_accounts() {
 	const accounts = [{name: "Alice", uri: "//Alice", address: "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"},
 										{name: "Bob", uri: "//Bob", address: "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"}];
 
-	let accounts_lookup = new Map();
+	let accounts_lookup = {};
 	for (const acc of accounts) {
-		accounts_lookup.set(acc.address, acc);
+		accounts_lookup[acc.address] = acc;
 	}
 
 	return accounts_lookup;
