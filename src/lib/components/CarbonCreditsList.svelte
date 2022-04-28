@@ -44,7 +44,10 @@
 					<tr>
 						<td>{carbon_credit.source}</td>
 						<td>{carbon_credit.serialNumber}</td>
-						<td>{accounts[carbon_credit.owner].name} ({carbon_credit.owner})</td>
+						<td><Address name={accounts[carbon_credit.owner].name}
+												 address={carbon_credit.owner}
+												 show_name={true}
+												 compress_address={true} />
 						<td>{carbon_credit.retired}</td>
 					</tr>
 				{/each}
