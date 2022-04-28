@@ -1,4 +1,5 @@
 <script>
+	import Address from '$lib/components/Address.svelte';
 
 	export let accounts;
 
@@ -37,7 +38,7 @@
 			<tr>
 				<td>{account.name}</td>
 				<td>{account.uri}</td>
-				<td>{account.address}</td>
+				<td><Address address='{account.address}' show_name={false} compress_address={false} /></td>
 			</tr>
 		{/each}
 		</tbody>

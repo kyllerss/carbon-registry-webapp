@@ -3,7 +3,7 @@
 	import { carbon_credit_store } from '$lib/stores/carbon_credits_store.js';
 	import Accounts from '$lib/components/Accounts.svelte';
 	import CarbonCredits from '$lib/components/CarbonCreditsList.svelte';
-	import { subscribe_carbon_credits } from '$lib/utils/blockchain.js'; // TODO REMOVE
+	import { subscribe_carbon_credits } from '$lib/utils/blockchain.js';
 
 	// These fields get read automatically from a GET request to the ./routes/index.js 'endpoint'
 	export let carbon_credits;
@@ -13,12 +13,15 @@
 	let unsubscribe;
 	onMount(async () => {
 			unsubscribe = await subscribe_carbon_credits((credits) => {
+				console.log("Detected carbon-credits event...");
 				carbon_credits = credits;
 			});
+		console.log("Subscribed to carbon-credits events...");
 	});
 
 	onDestroy(async () => {
 		if (unsubscribe) {
+			console.log("Unsubscribing from carbon_credits watch...");
 			unsubscribe();
 		}
 	});
