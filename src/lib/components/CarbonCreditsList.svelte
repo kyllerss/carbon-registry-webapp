@@ -1,4 +1,5 @@
 <script>
+	import Address from '$lib/components/Address.svelte';
 
 	export let carbon_credits;
 	export let accounts;
