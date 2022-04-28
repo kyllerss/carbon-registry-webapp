@@ -38,7 +38,7 @@
 			<tr>
 				<td>{account.name}</td>
 				<td>{account.uri}</td>
-				<td><Address address='{account.address}' show_name={false} compress_address={false} /></td>
+				<td><Address address='{account.address}' name='{account.name}' show_name={false} compress_address={false} /></td>
 			</tr>
 		{/each}
 		</tbody>
