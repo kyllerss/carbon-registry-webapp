@@ -7,7 +7,13 @@ export async function fetch_accounts() {
 	console.log('call to fetch_accounts...');
 	const accounts = [{name: "Alice", uri: "//Alice", address: "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"},
 										{name: "Bob", uri: "//Bob", address: "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"}];
-	return accounts;
+
+	let accounts_lookup = new Map();
+	for (const acc of accounts) {
+		accounts_lookup.set(acc.address, acc);
+	}
+
+	return accounts_lookup;
 }
 
 export async function fetch_carbon_credits() {

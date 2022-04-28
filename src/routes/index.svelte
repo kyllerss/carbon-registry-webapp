@@ -32,6 +32,6 @@
 <h1>Carbon Credits Registry</h1>
 <Accounts accounts='{accounts}'/>
 <div class='spacer' />
-<CarbonCredits carbon_credits='{carbon_credits}'/>
+<CarbonCredits carbon_credits='{carbon_credits}' accounts='{accounts}'/>
 <div class='spacer' />
 <a sveltekit:prefetch href="/new" >Create Credit</a>

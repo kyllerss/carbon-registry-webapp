@@ -33,7 +33,7 @@
 		<th>Address</th>
 		</thead>
 		<tbody>
-		{#each accounts as account}
+		{#each [...accounts] as [key, account]}
 			<tr>
 				<td>{account.name}</td>
 				<td>{account.uri}</td>

@@ -1,6 +1,7 @@
 <script>
 
 	export let carbon_credits;
+	export let accounts;
 
 </script>
 
@@ -43,7 +44,7 @@
 					<tr>
 						<td>{carbon_credit.source}</td>
 						<td>{carbon_credit.serialNumber}</td>
-						<td>{carbon_credit.owner}</td>
+						<td>{accounts.get(carbon_credit.owner).name} ({carbon_credit.owner})</td>
 						<td>{carbon_credit.retired}</td>
 					</tr>
 				{/each}

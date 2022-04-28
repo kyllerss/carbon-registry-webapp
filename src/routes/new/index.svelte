@@ -54,7 +54,7 @@
 		<div>
 			<label for='account'>Account:</label>
 			<select id='account' name='account'>
-				{#each accounts as account}
+				{#each [...accounts] as [key, account]}
 					<option value='{account.uri}'>{account.name}</option>
 				{/each}
 			</select>
